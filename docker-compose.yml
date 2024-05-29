@@ -1,0 +1,49 @@
+services:
+  polpette_api:
+    container_name: polpette_api
+    image: node:lts
+    build:
+      context: .
+      dockerfile: ./Dockerfile-dev
+    env_file: ./src/.env
+    working_dir: /home/polpette/app
+    volumes:
+      - ./src/api:/home/polpette/app/src/api
+    command: > 
+      bash -c 
+        'npm i &&
+         npm run watch'
+    ports:
+      - 3333:3000
+    depends_on:
+      - polpette_db
+    links:
+      - polpette_db
+    networks:
+      - polpette_back
+
+  polpette_adminer:
+    container_name: polpette_adminer
+    image: adminer
+    ports:
+      - 8080:8080
+    depends_on:
+      - polpette_db
+    networks:
+      - polpette_back
+      
+  polpette_db:
+    container_name: polpette_db
+    image: postgres:latest
+    env_file: ./src/.env
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - polpette_back
+
+volumes:
+  db:
+
+networks:
+  polpette_back:
+    driver: bridge
