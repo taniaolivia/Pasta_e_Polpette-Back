@@ -131,5 +131,12 @@ exports.userLogin = (req, res) => {
 };
  
 
+// Logout user
+exports.userLogout = (req, res) => {
+    
+    res.status(200).json({ message: "Logout successful" });
+};
+
+
 
 
