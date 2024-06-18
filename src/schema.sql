@@ -11,6 +11,17 @@ CREATE TABLE "public"."banner" (
 ) WITH (oids = false);
 
 
+DROP TABLE IF EXISTS "carousel";
+DROP SEQUENCE IF EXISTS carousel_id_seq;
+CREATE SEQUENCE carousel_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
+
+CREATE TABLE "public"."carousel" (
+    "id" integer DEFAULT nextval('carousel_id_seq') NOT NULL,
+    "image" integer NOT NULL,
+    CONSTRAINT "carousel_pkey" PRIMARY KEY ("id")
+) WITH (oids = false);
+
+
 DROP TABLE IF EXISTS "concept";
 DROP SEQUENCE IF EXISTS concept_id_seq;
 CREATE SEQUENCE concept_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
@@ -37,17 +48,14 @@ CREATE TABLE "public"."menu" (
 
 
 DROP TABLE IF EXISTS "user";
-DROP SEQUENCE IF EXISTS user_id_seq;
-CREATE SEQUENCE user_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
-
 CREATE TABLE "public"."user" (
-    "id" integer DEFAULT nextval('user_id_seq') NOT NULL,
     "firstName" character varying NOT NULL,
     "lastName" character varying NOT NULL,
     "email" character varying NOT NULL,
     "password" character varying NOT NULL,
-    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
+    "id" uuid NOT NULL
 ) WITH (oids = false);
 
 
--- 2024-06-18 09:17:36.797636+00
+-- 2024-06-18 10:14:06.435651+00
+
