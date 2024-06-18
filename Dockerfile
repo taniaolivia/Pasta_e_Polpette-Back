@@ -11,7 +11,7 @@ USER root
 RUN groupdel admins || true && \
     groupadd -g 1005 admins && \
     userdel polpette || true && \
-    useradd -m -u 1001 polpette && \
+    useradd -m -u 1002 polpette && \
     usermod -aG admins polpette && \
     # Create a repository for the application
     mkdir -p /home/polpette/app /home/polpette/app/api
