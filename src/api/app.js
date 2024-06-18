@@ -15,6 +15,12 @@ server.use(express.json());
 server.use(cookieParser());
 
 server.use(cors());
+
+const contactRoute = require("./routes/contactRoute");
+contactRoute(server);
+
+const restaurantRoute = require("./routes/restaurantRoute");
+restaurantRoute(server);
   
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
