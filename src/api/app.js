@@ -15,6 +15,8 @@ server.use(express.json());
 server.use(cookieParser());
 
 server.use(cors());
+const userRoute = require("./routes/userRoute");
+userRoute(server);
   
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
