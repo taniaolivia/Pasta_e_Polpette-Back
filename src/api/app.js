@@ -19,6 +19,15 @@ server.use(cors());
 const userRoute = require("./routes/userRoute");
 userRoute(server);
 
+const bannerRoute = require("./routes/bannerRoute");
+bannerRoute(server);
+
+const conceptRoute = require("./routes/conceptRoute");
+conceptRoute(server);
+
+const menuRoute = require("./routes/menuRoute");
+menuRoute(server);
+ 
 const contactRoute = require("./routes/contactRoute");
 contactRoute(server);
 
