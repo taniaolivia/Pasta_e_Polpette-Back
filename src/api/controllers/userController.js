@@ -72,3 +72,64 @@ exports.userRegister = (req, res) => {
     }
 }
 
+
+// Login user
+exports.userLogin = (req, res) => {
+    const { email, password } = req.body;
+
+    // Check if email and password are provided
+    if (!email || !password) {
+        return res.status(400).json({ message: "Missing email or password" });
+    }
+
+    // Find user by email
+    db("user")
+        .select("*")
+        .where("email", "=", email)
+        .then((user) => {
+            if (user.length === 0) {
+                return res.status(401).json({ message: "User does not exist" });
+            }
+
+            const foundUser = user[0];
+
+            // Compare the hashed password
+            bcrypt.compare(password, foundUser.password, (error, match) => {
+                if (error) {
+                    return res.status(500).json({ message: "Error comparing passwords" });
+                }
+
+                if (!match) {
+                    return res.status(401).json({ message: "Invalid password" });
+                }
+
+                // Generate JWT token
+                const userData = {
+                    id: foundUser.id,
+                    email: foundUser.email,
+                    firstName: foundUser.firstName,
+                    lastName: foundUser.lastName
+                };
+
+                jwt.sign(userData, process.env.JWT_KEY, { expiresIn: "1d" }, (error, token) => {
+                    if (error) {
+                        return res.status(500).json({ message: "Error generating token" });
+                    }
+
+                    // Return the token and user data
+                    res.status(200).json({
+                        message: "Login successful",
+                        token: token,
+                        user: userData
+                    });
+                });
+            });
+        })
+        .catch(error => {
+            res.status(500).json({ message: "Database error", error: error });
+        });
+};
+ 
+
+
+

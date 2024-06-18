@@ -6,5 +6,9 @@ module.exports = (server) => {
 server.post("/api/register", cors(), userController.userRegister);
 
 
+server.post("/api/login", cors(), userController.userLogin);
+
+
+
 
 }
