@@ -21,6 +21,8 @@ const bannerRoute = require("./routes/bannerRoute");
 bannerRoute(server);
 const conceptRoute = require("./routes/conceptRoute");
 conceptRoute(server);
+const menuRoute = require("./routes/menuRoute");
+menuRoute(server);
   
 server.listen(port, hostname, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
