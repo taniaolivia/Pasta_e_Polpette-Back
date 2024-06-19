@@ -7,6 +7,9 @@ module.exports = (server) => {
 server.route("/api/menu")
 .get( cors(), menuController.getMenu);
 
+server.route("/api/menuCarousel")
+.get( cors(), menuController.getMenuCarousel);
+
 server.route("/api/menu/description")
 .patch(jwtMiddleware.authenticateUser,cors(), menuController.updatemenuDescription);
 

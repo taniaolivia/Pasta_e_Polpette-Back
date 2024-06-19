@@ -17,6 +17,23 @@ exports.getMenu = (req, res) => {
         });
 };
 
+exports.getMenuCarousel = (req, res) => {
+    db('carousel')
+        .select('*')
+        .then(carousel => {
+            res.status(200).json({
+                carousel: carousel
+            });
+        })
+        .catch(error => {
+            console.error(error);
+            res.status(500).json({
+                message: 'Failed to retrieve carousel',
+                error: error
+            });
+        });
+};
+
 //  update a description in the menu table
 exports.updatemenuDescription = (req, res) => {
     const { description } = req.body;
