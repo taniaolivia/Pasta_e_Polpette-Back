@@ -1,10 +1,9 @@
 const db = require("../knex");
 
-
 exports.getMenu = (req, res) => {
     db('menu')
         .select('*')
-        .then(concept => {
+        .then(menu => {
             res.status(200).json({
                 menu: menu
             });
@@ -12,12 +11,11 @@ exports.getMenu = (req, res) => {
         .catch(error => {
             console.error(error);
             res.status(500).json({
-                message: 'Failed to retrieve concept',
+                message: 'Failed to retrieve menu',
                 error: error
             });
         });
 };
-
 
 //  update a description in the menu table
 exports.updatemenuDescription = (req, res) => {
