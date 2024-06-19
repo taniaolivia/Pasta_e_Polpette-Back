@@ -11,6 +11,8 @@ CREATE TABLE "public"."contact" (
     "telephone" character varying(50) NOT NULL,
     "email" character varying(100) NOT NULL,
     "address" character varying(200) NOT NULL,
+    "instagram" character varying(200),
+    "tiktok" character varying(200),
     CONSTRAINT "contact_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
