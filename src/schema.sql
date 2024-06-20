@@ -16,22 +16,25 @@ CREATE TABLE "public"."contact" (
     CONSTRAINT "contact_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
 
-
 DROP TABLE IF EXISTS "restaurant";
 DROP SEQUENCE IF EXISTS restaurant_id_seq;
 CREATE SEQUENCE restaurant_id_seq INCREMENT 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1;
 
 CREATE TABLE "public"."restaurant" (
     "id" integer DEFAULT nextval('restaurant_id_seq') NOT NULL,
-    "title" character varying(100) NOT NULL,
-    "name" character varying(100) NOT NULL,
-    "address" character varying(200) NOT NULL,
-    "schedule" character varying(200) NOT NULL,
-    "telephone" character varying(50),
-    "email" character varying(100),
-    "access" character varying(200),
+    "title" character varying NOT NULL,
+    "name" character varying NOT NULL,
+    "address" character varying NOT NULL,
+    "schedule" character varying NOT NULL,
+    "telephone" character varying NOT NULL,
+    "email" character varying NOT NULL,
+    "access" character varying NOT NULL,
+    "latitude" double precision NOT NULL,
+    "langitude" double precision NOT NULL,
     CONSTRAINT "restaurant_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
+
+
 
 
 DROP TABLE IF EXISTS "banner";
