@@ -22,17 +22,14 @@ WORKDIR /home/polpette/app
 # Copy the package file to the project
 COPY ["./package.json", "./package-lock.json", "./"]
 
+# Installe les dépendances
+RUN npm ci
+
 # Copy the rest of the code of the application inside the container
 COPY ./ /home/polpette/app
 
 # Making sure that the user 'polpette' has the permission to the directory of the application
 RUN chown -R polpette:polpette /home/polpette/app
-
-# Installe les dépendances
-RUN npm ci
-
-# Install all the dependencies needed 
-RUN npm install
 
 # Install nodemon package globally so that the project can run using the command run watch
 RUN npm install -g nodemon
