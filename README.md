@@ -1,9 +1,6 @@
 ## Pasta e Polpette Backend API
 
-Pasta e Polpette API is developed by Nihel Ouanassi and Tania Olivia as part of our master's degree workshop project. This API serves as the backend for the Pasta e Polpette website, ...
-
-### Description
-Pasta e Polpette is a website aimed at ...
+Pasta e Polpette API is developed by Nihel Ouanassi and Tania Olivia as part of our master's degree workshop project. This API serves as the backend for the Pasta e Polpette website.
 
 ## Developers
 - Tania Olivia
@@ -13,15 +10,14 @@ Pasta e Polpette is a website aimed at ...
 - Node.js: Backend JavaScript runtime environment.
 - Express: Web application framework for Node.js.
 - Docker: Containerization platform for deploying applications.
-- MySQL: Relational database management system.
-- Render: Hosting platform for deploying the API.
-- Amazon RDS: Relational Database Service for hosting MySQL database.
+- PostgreSQL: Relational database management system.
+- Render: Hosting platform for deploying the API and Relational Database Service for hosting PostgreSQL database
 
 ## Project Structure
 - **src/api:** 
 - **/controllers:** Contains controllers for handling business logic.
 - **/middlewares:** Contains middleware functions for request processing.
-- **/services:** Contains service functions for interacting with the database.
+- **/routes:** Contains routes for the API.
 
 ## Setup
 1. **Clone the repository:** 

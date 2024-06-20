@@ -1,5 +1,6 @@
 const db = require("../knex");
 
+// Get the menu's data
 exports.getMenu = (req, res) => {
     db('menu')
         .select('*')
@@ -17,6 +18,7 @@ exports.getMenu = (req, res) => {
         });
 };
 
+// Get the images of the menu section for the carousel
 exports.getMenuCarousel = (req, res) => {
     db('carousel')
         .select('*')
@@ -34,69 +36,28 @@ exports.getMenuCarousel = (req, res) => {
         });
 };
 
-//  update a description in the menu table
-exports.updatemenuDescription = (req, res) => {
-    const { description } = req.body;
-
-    if (!description) {
-        return res.status(400).json({
-            message: 'Missing required field: description'
-        });
-    }
+// Update the menu's data
+exports.updateMenuSectionData = (req, res) => {
+    const menu = req.body;
 
     db('menu')
-        .update({ description })
+        .update(menu)
         .then(result => {
             if (result) {
                 res.status(200).json({
-                    message: 'Description updated successfully'
+                    message: "Menu's data updated successfully"
                 });
             } else {
                 res.status(500).json({
-                    message: 'Failed to update description'
+                    message: "Failed to update menu's data"
                 });
             }
         })
         .catch(error => {
             console.error(error);
             res.status(500).json({
-                message: 'Failed to update description',
+                message: "Failed to update menu's data",
                 error: error
             });
         });
 };
-
-
-//  update a title in the menu table
-exports.updatemenutTitle = (req, res) => {
-    const { title } = req.body;
-
-    if (!title) {
-        return res.status(400).json({
-            message: 'Missing required field: title'
-        });
-    }
-
-    db('menu')
-        .update({ title })
-        .then(result => {
-            if (result) {
-                res.status(200).json({
-                    message: 'title updated successfully'
-                });
-            } else {
-                res.status(500).json({
-                    message: 'Failed to update title'
-                });
-            }
-        })
-        .catch(error => {
-            console.error(error);
-            res.status(500).json({
-                message: 'Failed to update title',
-                error: error
-            });
-        });
-};
-
-
