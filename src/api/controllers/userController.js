@@ -3,12 +3,6 @@ const bcrypt = require("bcryptjs");
 const db = require("../knex");
 const { uuid } = require('uuidv4');
 
-
-
-
-
-const currentModuleDir = __dirname;
-
 // Register new user
 exports.userRegister = (req, res) => {
     let newUser = req.body;

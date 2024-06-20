@@ -28,7 +28,7 @@ CREATE TABLE "public"."restaurant" (
     "address" character varying(200) NOT NULL,
     "schedule" character varying(200) NOT NULL,
     "telephone" character varying(50),
-    "email" character varying(100) NOT NULL,
+    "email" character varying(100),
     "access" character varying(200),
     CONSTRAINT "restaurant_pkey" PRIMARY KEY ("id")
 ) WITH (oids = false);
