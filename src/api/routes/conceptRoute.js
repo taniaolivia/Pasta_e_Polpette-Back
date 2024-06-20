@@ -7,13 +7,7 @@ module.exports = (server) => {
 server.route("/api/concept")
 .get( cors(), conceptController.getConcept);
 
-server.route("/api/concept/description")
-.patch(jwtMiddleware.authenticateUser,cors(), conceptController.updateconceptDescription);
-
-server.route("/api/concept/title")
-.patch(jwtMiddleware.authenticateUser,cors(), conceptController.updateconceptTitle);
-
-server.route("/api/concept/image")
-.patch(jwtMiddleware.authenticateUser,cors(), conceptController.updateconceptImage);
+server.route("/api/concept")
+.patch(jwtMiddleware.authenticateUser,cors(), conceptController.updateConceptData);
 
 }
